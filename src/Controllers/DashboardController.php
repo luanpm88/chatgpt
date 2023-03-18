@@ -11,8 +11,6 @@ class DashboardController extends BaseController
 {
     public function index(Request $request)
     {
-        return view('chatgpt::index', [
-            'chatgpt' => Chatgpt::initialize(),
-        ]);
+        return redirect()->action('\Acelle\Chatgpt\Controllers\ChatgptController@settings');
     }
 }

@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-    <h3 class="">{{ trans('chatgpt::messages.settings') }}</h3>
+    <h3 class="">{{ trans('chatgpt::messages.connection') }}</h3>
     <p>
         {!! trans('chatgpt::messages.settings.intro') !!}
     </p>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="text-left">
-            <button class="btn btn-default me-1">{{ trans('messages.save') }}</button>
+            <button class="btn btn-secondary me-1">{{ trans('messages.save') }}</button>
             <a class="btn btn-default" href="{{ action('Admin\PluginController@index') }}">{{ trans('cashier::messages.cancel') }}</a>
         </div>
 
