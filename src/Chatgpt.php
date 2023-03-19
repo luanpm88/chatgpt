@@ -33,7 +33,7 @@ class Chatgpt
         $client = new \GuzzleHttp\Client();
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $this->gateway->secretKey,
+            'Authorization' => 'Bearer ' . $this->getOpenAIApiKey(),
         ];
 
         if (isset($options['headers'])) {
@@ -99,5 +99,19 @@ class Chatgpt
     public function getOpenAIApiKey()
     {
         return $this->openAIApiKey;
+    }
+
+    public function getBannerUrl()
+    {
+        $possibleFileNames = ['banner.svg'];
+
+        foreach ($possibleFileNames as $file) {
+            $absPath = $this->plugin->getStoragePath($file);
+            if (file_exists($absPath)) {
+                return \Acelle\Helpers\generatePublicPath($absPath);
+            }
+        }
+
+        return;
     }
 }

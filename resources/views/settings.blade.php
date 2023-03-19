@@ -1,28 +1,19 @@
-@extends('layouts.core.backend')
+@extends('layouts.core.backend', [
+	'body_class' => 'has-topfix-header',
+	'menu' => 'plugin',
+])
 
 @section('title', trans('chatgpt::messages.chatgpt'))
 
 @section('page_header')
 
-    <div class="page-title">
-        <ul class="breadcrumb breadcrumb-caret position-right">
-            <li class="breadcrumb-item"><a href="{{ action("HomeController@index") }}">{{ trans('messages.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ action("Admin\PaymentController@index") }}">{{ trans('messages.payment_gateways') }}</a></li>
-            <li class="breadcrumb-item active">{{ trans('messages.update') }}</li>
-        </ul>
-        <h1>
-            <span class="text-semibold">
-                <span class="material-symbols-rounded">
-                    payments
-                </span>
-                {{ trans('chatgpt::messages.chatgpt') }}</span>
-        </h1>
-    </div>
+	<div class="topfix-header">
+        <div style="display:flex;align-items:center;height: ;overflow:hidden;">
+            <img src="{{ $chatgpt->getBannerUrl() }}" width="100%" />
+        </div>
+	</div>
 
-@endsection
-
-@section('content')
-    <h3 class="">{{ trans('chatgpt::messages.connection') }}</h3>
+    <h2 class="mt-5">{{ trans('chatgpt::messages.connection') }}</h2>
     <p>
         {!! trans('chatgpt::messages.settings.intro') !!}
     </p>
