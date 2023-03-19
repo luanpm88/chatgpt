@@ -14,7 +14,7 @@ class ChatgptController extends BaseController
 {
     public function settings(Request $request)
     {
-        $chatgpt = Chatgpt::initialize();      
+        $chatgpt = Chatgpt::initialize();
 
         if ($request->isMethod('post')) {
             // save Chatgpt setting

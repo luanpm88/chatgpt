@@ -4,6 +4,7 @@ namespace Acelle\Chatgpt;
 
 use Acelle\Model\Setting;
 use Acelle\Model\Plugin;
+use Orhanerday\OpenAi\OpenAi;
 
 class Chatgpt
 {
@@ -58,12 +59,12 @@ class Chatgpt
             'openai_api_key' => 'required',
         ]);
 
-        $chatgpt->publicKey = isset($params['openai_api_key']) ? $params['openai_api_key'] : null;
+        $chatgpt->openAIApiKey = isset($params['openai_api_key']) ? $params['openai_api_key'] : null;
 
         // test service
         $validator->after(function ($validator) use ($params, $chatgpt) {
             try {
-                // $chatgpt->test();
+                $chatgpt->test();
             } catch(\Exception $e) {
                 $validator->errors()->add('field', 'Can not connect to ChatGPT. Error: ' . $e->getMessage());
             }
@@ -78,11 +79,6 @@ class Chatgpt
         $this->saveOpenAIApiKeyToSetting($params['openai_api_key']);
 
         return $validator;
-    }
-
-    public function test()
-    {
-        throw new \Exception('test() function not emplement yet!');
     }
 
     public function getOpenAIApiKeyFromSetting()
@@ -113,5 +109,50 @@ class Chatgpt
         }
 
         return;
+    }
+
+    public function test()
+    {
+        return $this->chat([
+            [
+                "role" => "system",
+                "content" => "You are a helpful assistant."
+            ],
+            [
+                "role" => "user",
+                "content" => "Who won the world series in 2020?"
+            ],
+            [
+                "role" => "assistant",
+                "content" => "The Los Angeles Dodgers won the World Series in 2020."
+            ],
+            [
+                "role" => "user",
+                "content" => "I love you so much"
+            ],
+        ]);
+    }
+
+    public function chat($messages)
+    {
+        $open_ai_key = $this->getOpenAIApiKey();
+        $open_ai = new OpenAi($open_ai_key);
+
+        $complete = $open_ai->chat([
+            'model' => 'gpt-3.5-turbo',
+            'messages' => $messages,
+            'temperature' => 1.0,
+            'max_tokens' => 4000,
+            'frequency_penalty' => 0,
+            'presence_penalty' => 0,
+        ]);
+
+        $result = json_decode($complete, true);
+
+        if(isset($result['error'])) {
+            throw new \Exception('Error from ChatGPT: ' . $result['error']['message']);
+        }
+
+        return $result;
     }
 }

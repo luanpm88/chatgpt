@@ -7,13 +7,17 @@
 
 @section('page_header')
 
-	<div class="topfix-header">
+	<div class="topfix-header mb-4">
         <div style="display:flex;align-items:center;height: ;overflow:hidden;">
             <img src="{{ $chatgpt->getBannerUrl() }}" width="100%" />
         </div>
 	</div>
 
-    <h2 class="mt-5">{{ trans('chatgpt::messages.connection') }}</h2>
+@endsection
+
+@section('content')
+
+    <h2 class="">{{ trans('chatgpt::messages.connection') }}</h2>
     <p>
         {!! trans('chatgpt::messages.settings.intro') !!}
     </p>
