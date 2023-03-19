@@ -2,7 +2,7 @@
     "name": "acelle/chatgpt",
     "title": "Chatgpt For ACM Plugin",
     "version": "1.0.2",
-    "app_version": "4.0.24-p419",
+    "app_version": "4.0.24-p414",
     "description": "Add Chatgpt to ACM then user can get suggestions from Chatgpt",
     "autoload": {
         "psr-4": {
