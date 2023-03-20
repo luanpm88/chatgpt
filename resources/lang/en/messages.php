@@ -7,6 +7,6 @@ return array(
     'connection' => 'Connect to ChatGPT',
     'settings.intro' => 'This plugin adds the power of ChatGPT to the Acelle Mail application to assist customers
         in getting help with various tasks, such as recommending email subjects,
-        improving email content, and much more. Fill your Chatgpt OpenAI API ket below.
+        improving email content, and much more. Fill your Chatgpt OpenAI API Key below to connect.
     ',
 );

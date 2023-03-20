@@ -18,9 +18,14 @@
 @section('content')
 
     <h2 class="">{{ trans('chatgpt::messages.connection') }}</h2>
-    <p>
-        {!! trans('chatgpt::messages.settings.intro') !!}
-    </p>
+
+    <div class="row">
+        <div class="col-md-10">
+            <p>
+                {!! trans('chatgpt::messages.settings.intro') !!}
+            </p>
+        </div>
+    </div>
 
     <form enctype="multipart/form-data" action="{{ action('\Acelle\Chatgpt\Controllers\ChatgptController@settings') }}" method="POST" class="form-validate-jquery">
         {{ csrf_field() }}
