@@ -44,8 +44,12 @@
         </div>
 
         <div class="text-left">
+            @if (!$chatgpt->plugin->isActive())
+                <input type="submit" name="enable" class="btn btn-primary me-1" value="{{ trans('chatgpt::messages.save_and_enable') }}" />
+            @endif
+
             <button class="btn btn-secondary me-1">{{ trans('messages.save') }}</button>
-            <a class="btn btn-default" href="{{ action('Admin\PluginController@index') }}">{{ trans('cashier::messages.cancel') }}</a>
+            <a class="btn btn-light" href="{{ action('Admin\PluginController@index') }}">{{ trans('chatgpt::messages.cancel') }}</a>
         </div>
 
     </form>

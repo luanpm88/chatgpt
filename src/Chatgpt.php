@@ -83,13 +83,13 @@ class Chatgpt
 
     public function getOpenAIApiKeyFromSetting()
     {
-        return Setting::get('cashier.chatgpt.openai_api_key');
+        return Setting::get('chatgpt.openai_api_key');
     }
 
     public function saveOpenAIApiKeyToSetting($openai_api_key)
     {
         $this->openAIApiKey = $openai_api_key;
-        Setting::set('cashier.chatgpt.openai_api_key', $this->openAIApiKey);
+        Setting::set('chatgpt.openai_api_key', $this->openAIApiKey);
     }
 
     public function getOpenAIApiKey()

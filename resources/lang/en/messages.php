@@ -9,4 +9,8 @@ return array(
         in getting help with various tasks, such as recommending email subjects,
         improving email content, and much more. Fill your Chatgpt OpenAI API Key below to connect.
     ',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'save_and_enable' => 'Save & Enable the Plugin',
+    'settings.updated' => 'ChatGPT settings were updated',
 );
