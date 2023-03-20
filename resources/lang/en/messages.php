@@ -16,4 +16,5 @@ return array(
     'cancel' => 'Cancel',
     'save_and_enable' => 'Save & Enable the Plugin',
     'settings.updated' => 'ChatGPT settings were updated',
+    'no_api_key_found' => 'There is no OpenAI API key provied. Let\'s go to the plugin settings to add one',
 );

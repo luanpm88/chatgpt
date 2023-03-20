@@ -36,10 +36,11 @@ class ServiceProvider extends Base
             ];
         });
 
-        // register payment
-        $chatgpt = Chatgpt::initialize();
-        if ($chatgpt->plugin->isActive()) {
-        }
+        // Activate hook
+        Hook::register('activate_plugin_acelle/chatgpt', function() {
+            $chatgpt = Chatgpt::initialize();
+            $chatgpt->test();
+        });
     }
 
     /**

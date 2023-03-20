@@ -113,6 +113,11 @@ class Chatgpt
 
     public function test()
     {
+        // no api key provied
+        if (!$this->getOpenAIApiKey()) {
+            throw new \Exception(trans('chatgpt::messages.no_api_key_found'));
+        }
+
         return $this->chat([
             [
                 "role" => "system",
