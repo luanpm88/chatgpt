@@ -155,9 +155,23 @@ class Chatgpt
         $result = json_decode($complete, true);
 
         if(isset($result['error'])) {
-            throw new \Exception('Error from ChatGPT: ' . $result['error']['message']);
+            throw new \Exception('Error from ChatGPT: ' . json_encode($result));
         }
 
         return $result;
+    }
+
+    // Input: messages array history
+    // Return: new message [role=>?,content=?]
+    public function ask($messages)
+    {
+        // try to get response message
+        $result = $this->chat($messages);
+
+        if(!isset($result['choices']) || !count($result['choices'])) {
+            throw new \Exception('Can not find the answer from reponse: ' . json_encode($result));
+        }
+
+        return $result['choices'][0]['message'];
     }
 }
