@@ -35,41 +35,20 @@ fi
 
 CURPATH=$(pwd)
 
-# Execute composer install --no-dev --no-scripts
-NO_WP=true php composer.phar install --no-dev --no-scripts
 
 # cp -r $CURPATH $OUTPUT
 #
 rsync -qavr --exclude="/vendor" --exclude='.git' $CURPATH/ $OUTPUT
 
-# copy the whole folder vendor seems faster
-cp -r $CURPATH/vendor $OUTPUT/
-
 cd $OUTPUT
-
-# create version file
-touch VERSION
-echo "$VERSION" > VERSION
-
-# create default env file
-cp .env.example .env
 
 # clean up
 rm -fr .git*
 rm -fr build.sh
 rm -fr php-cs-fixer
-rm -fr composer.phar
-
-# generate unique key
-NO_WP=true php artisan cache:clear
-NO_WP=true php artisan view:clear
-NO_WP=true php artisan route:clear
-NO_WP=true php artisan key:generate
 
 cd ..
 chmod 755 -R "$APPDIR"
-chmod 775 -R "$APPDIR/storage"
-chmod 775 -R "$APPDIR/bootstrap/cache"
 zip -r "$APPZIP" "$APPDIR" > /dev/null
 rm -fr "$APPDIR"
 
