@@ -44,12 +44,13 @@ cd $OUTPUT
 
 # clean up
 rm -fr .git*
-rm -fr build.sh
+rm -fr build-plugin.sh
 rm -fr php-cs-fixer
 
-cd ..
 chmod 755 -R "$APPDIR"
-zip -r "$APPZIP" "$APPDIR" > /dev/null
+zip -r "$APPZIP" ./* > /dev/null
+mv "$APPZIP" ../
+cd ../
 rm -fr "$APPDIR"
 
 echo "File exported [$APPZIP]"
