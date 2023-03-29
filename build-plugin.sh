@@ -47,7 +47,7 @@ rm -fr .git*
 rm -fr build-plugin.sh
 rm -fr php-cs-fixer
 
-chmod 755 -R "$APPDIR"
+chmod 755 -R ./*
 zip -r "$APPZIP" ./* > /dev/null
 mv "$APPZIP" ../
 cd ../
