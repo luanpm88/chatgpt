@@ -13,6 +13,14 @@ class ChatgptController extends BaseController
         $chatgpt = Chatgpt::initialize();
 
         if ($request->isMethod('post')) {
+            // demo mode
+            if (config('app.demo')) {
+                return response()->view('chatgpt::settings', [
+                    'chatgpt' => $chatgpt,
+                    'errors' => collect(['demo' => 'This action is not authorized in demo mode']),
+                ]);
+            }
+
             // save Chatgpt setting
             $validator = $chatgpt->saveAPISettings($request->all());
 

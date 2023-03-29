@@ -16,7 +16,6 @@
 @endsection
 
 @section('content')
-
     <h2 class="">{{ trans('chatgpt::messages.connection') }}</h2>
 
     <div class="row">
@@ -31,15 +30,21 @@
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
-                @include('helpers.form_control', [
-                    'type' => 'text',
-                    'class' => '',
-                    'name' => 'openai_api_key',
-                    'value' => $chatgpt->getOpenAIApiKey(),
-                    'label' => trans('chatgpt::messages.openai_api_key'),
-                    'help_class' => 'payment',
-                    'rules' => ['openai_api_key' => 'required'],
-                ])
+                <div class="form-group {{ $errors->has('openai_api_key') ? 'has-error' : '' }}">
+                    <label for="">{{ trans('chatgpt::messages.openai_api_key') }}</label>
+                    <input
+                        value="{{ config('app.demo') ? '*****************************' : $chatgpt->getOpenAIApiKey() }}"
+                        type="password"
+                        name="openai_api_key"
+                        class="form-control required"
+                    />
+    
+                    @if ($errors->has('openai_api_key'))
+                        <span class="help-block">
+                            {{ $errors->first('openai_api_key') }}
+                        </span>
+                    @endif
+                </div>
             </div>
         </div>
 
