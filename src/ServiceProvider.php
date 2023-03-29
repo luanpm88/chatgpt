@@ -25,7 +25,7 @@ class ServiceProvider extends Base
         $this->loadTranslationsFrom(storage_path('app/data/plugins/acelle/chatgpt/lang/'), 'chatgpt');
 
         // Register the translation file against Acelle translation management
-        Hook::register('add_translation_file', function() {
+        Hook::register('add_translation_file', function () {
             return [
                 "id" => '#acelle/chatgpt_translation_file',
                 "plugin_name" => "acelle/chatgpt",
@@ -37,7 +37,7 @@ class ServiceProvider extends Base
         });
 
         // Activate hook
-        Hook::register('activate_plugin_acelle/chatgpt', function() {
+        Hook::register('activate_plugin_acelle/chatgpt', function () {
             $chatgpt = Chatgpt::initialize();
             $chatgpt->test();
         });

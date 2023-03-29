@@ -21,23 +21,36 @@ VERSION=$(git tag --points-at HEAD)
 
 if [ -z "$VERSION" ]
 then
-  echo "Error: no version (tag) found. Make a tag first, for example: git tag -a 1.0.0 -m 'My First release'" && exit 1
+  echo "Error: no version (tag) found" && exit 1
 fi
 
 APPDIR="$APPNAME"
 APPZIP="$APPNAME-$VERSION.zip"
 OUTPUT="$1/$APPDIR"
+CURDIR=$(pwd)
 
 if [ -d "$OUTPUT" ]; then
-  echo "Error: directory [$OUTPUT] already exists" && exit 1
+  echo "Error: director [$OUTPUT] already exists" && exit 1
 fi
 
-mkdir $OUTPUT
-cp -r ./* $OUTPUT/
-cd $OUTPUT/
-rm build.sh
-zip -r $APPZIP ./*
-mv $APPZIP ../
-cd ..
-rm -fr $APPDIR
-echo "$APPZIP created"
+CURPATH=$(pwd)
+
+
+# cp -r $CURPATH $OUTPUT
+#
+rsync -qavr --exclude="/vendor" --exclude='.git' $CURPATH/ $OUTPUT
+
+cd $OUTPUT
+
+# clean up
+rm -fr .git*
+rm -fr build-plugin.sh
+rm -fr php-cs-fixer
+
+chmod 755 -R ./*
+zip -r "$APPZIP" ./* > /dev/null
+mv "$APPZIP" ../
+cd ../
+rm -fr "$APPDIR"
+
+echo "File exported [$APPZIP]"

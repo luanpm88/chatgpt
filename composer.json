@@ -1,8 +1,8 @@
 {
     "name": "acelle/chatgpt",
-    "title": "Chatgpt For ACM",
+    "title": "ChatGPT plugin for Acelle",
     "version": "1.0.2",
-    "app_version": "4.0.24-p414",
+    "app_version": "4.0.24-p511",
     "description": "Utilize ChatGPT's capabilities to aid customers with a variety of tasks",
     "autoload": {
         "psr-4": {

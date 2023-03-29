@@ -154,7 +154,7 @@ class Chatgpt
 
         $result = json_decode($complete, true);
 
-        if(isset($result['error'])) {
+        if (isset($result['error'])) {
             throw new \Exception('Error from ChatGPT: ' . json_encode($result));
         }
 
@@ -168,7 +168,7 @@ class Chatgpt
         // try to get response message
         $result = $this->chat($messages);
 
-        if(!isset($result['choices']) || !count($result['choices'])) {
+        if (!isset($result['choices']) || !count($result['choices'])) {
             throw new \Exception('Can not find the answer from reponse: ' . json_encode($result));
         }
 
