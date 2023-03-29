@@ -55,16 +55,8 @@ echo "$VERSION" > VERSION
 cp .env.example .env
 
 # clean up
-rm -fr storage/logs/*
-rm -fr storage/framework/views/*
-rm -fr storage/framework/cache/*
-test -e  storage/framework/cache/data || mkdir storage/framework/cache/data/
-rm -fr storage/framework/sessions/*
-touch storage/recache
-rm -fr .authenticate
 rm -fr .git*
 rm -fr build.sh
-rm -fr bootstrap/cache/config.php
 rm -fr php-cs-fixer
 rm -fr composer.phar
 
