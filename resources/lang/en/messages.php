@@ -59,4 +59,10 @@ return array(
     'chat.suggest_more_informal' => 'Suggest a more informal phrase',
     'chat.sujbect.copied' => 'Email subject copied: ',
     'chat.sujbect.inserted' => 'Email subject was updated',
+    'chat.builder.ask_for_grammatical_correctness' => 'Please check the grammar & spelling of this text ":text". If it is not correct, give me ONE corrected subject, quote it by a pair of #',
+    'chat.builder.ask_for_grammatical_correctness.show' => 'Please check the grammar & spelling of this text ":text". If it is not correct, give me ONE corrected subject',
+    'chat.builder.ask_for_more_formal' => 'Please suggest a more formal version of this text ":text", quote it by a pair of #',
+    'chat.builder.ask_for_more_formal.show' => 'Please suggest a more formal version of this text ":text"',
+    'chat.builder.ask_for_more_informal' => 'Please suggest a more informal version of this text ":text", quote it by a pair of #',
+    'chat.builder.ask_for_more_informal.show' => 'Please suggest a more informal version of this text ":text"',
 );
