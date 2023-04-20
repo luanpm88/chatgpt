@@ -99,16 +99,8 @@ class Chatgpt
 
     public function getBannerUrl()
     {
-        $possibleFileNames = ['banner.svg'];
-
-        foreach ($possibleFileNames as $file) {
-            $absPath = $this->plugin->getStoragePath($file);
-            if (file_exists($absPath)) {
-                return \Acelle\Helpers\generatePublicPath($absPath);
-            }
-        }
-
-        return;
+        $banner = $this->plugin->getStoragePath('banner.svg');
+        return \Acelle\Helpers\generatePublicPath($banner);
     }
 
     public function test()
