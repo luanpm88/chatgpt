@@ -99,7 +99,7 @@ class Chatgpt
 
     public function getBannerUrl()
     {
-        $banner = $this->plugin->getStoragePath('banner.svg');
+        $banner = $this->plugin->getStoragePath('banner-nobrand.svg');
         return \Acelle\Helpers\generatePublicPath($banner);
     }
 
