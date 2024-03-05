@@ -67,7 +67,7 @@ class Chatgpt
                 $chatgpt->test();
             } catch(\Exception $e) {
                 if (strpos($e->getMessage(), 'insufficient_quota') !== false) {
-                    $validator->errors()->add('chatppt', 'The quota for ChatGPT has run out. Please upgrade your OpenAI plan.');
+                    $validator->errors()->add('chatppt', 'The quota for ChatGPT has run out. Please upgrade your OpenAI plan. Billing details can be checked <a target="_blank" href="https://openai.com/chatgpt/pricing" class="me-0">here</a>.');
                 } else {
                     $validator->errors()->add('field', 'The quota for ChatGPT has run out. Please upgrade your OpenAI plan.' . $e->getMessage());
                 }
