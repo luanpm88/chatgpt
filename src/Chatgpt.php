@@ -66,7 +66,11 @@ class Chatgpt
             try {
                 $chatgpt->test();
             } catch(\Exception $e) {
-                $validator->errors()->add('field', 'Can not connect to ChatGPT. Error: ' . $e->getMessage());
+                if (strpos($e->getMessage(), 'insufficient_quota') !== false) {
+                    $validator->errors()->add('chatppt', 'The quota for ChatGPT has run out. Please upgrade your OpenAI plan.');
+                } else {
+                    $validator->errors()->add('field', 'The quota for ChatGPT has run out. Please upgrade your OpenAI plan.' . $e->getMessage());
+                }
             }
         });
 
